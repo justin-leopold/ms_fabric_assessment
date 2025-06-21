@@ -12,7 +12,7 @@ The PowerBI Assessment package provides automated tools to:
 
 ## Prerequisites
 
-- Python 3.7 or higher
+- Python 3.10 or higher
 - pip package manager
 - Access to PowerBI assets you want to assess
 
