@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: fabric-audit
+Version: 1.14
+Summary: The sample scripts are not supported under any Microsoft standard support program or service.
+Author: Go-Live Assessment Team
+Author-email: 9 - Go Live Assessment - Fabric VBD <878f63a9.microsoft.com@emea.teams.ms>
+License: MIT
+Requires-Dist: requests
+Requires-Dist: pyarrow
+Requires-Dist: pyspark
+Requires-Dist: lxml
+Requires-Dist: azure-identity
+
+=========================================
+Run from a package
+
+1. Copy the module locally
+2. Install the latest version of Python 3 from msstore, winget, or via a direct download
+3. Run in Terminal: pip install .\fabric_audit-x.x.x-py3-none-any.whl
+4. Run in Terminal: python -m fabric_audit -c file://c:\temp\out
+
+=========================================
+Run directly for dev purposes (make sure to install dependencies listed in setup.py). Create a .py file:
+
+from fabric_audit import Audit
+
+audit = Audit()
+audit.set_sink("file://c:/temp/out")
+audit.set_capacity_metrics_dataset_id('8bcb8dd1-0a5d-4a27-9a5c-d340adc72b21')
+audit.skip_other_collectors(['Inverntory'])
+audit.run()
+
+==========================================
+Run in a Notebook
+
+%pip install builtin/fabric_audit-x.x.x-py3-none-any.whl
+
+from fabric_audit import Audit
+
+audit = Audit()
+audit.set_sink("lakehouse://default")
+audit.set_service_principal('','','')
+audit.set_capacity_metrics_dataset_id('8bcb8dd1-0a5d-4a27-9a5c-d340adc72b21')
+audit.run()
+
+
+===========================================
+When running as SP:
+ - Add SP to the Admin API access list in tenant settings
+ - Grant access to the Admin monitoring workspace
+ - Grant access to the Fabric capacity metrics workspace
